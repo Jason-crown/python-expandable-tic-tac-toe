@@ -1,4 +1,4 @@
-from initialize import x, y, board, size, sym
+from initialize import x, y, board, sym
 import stage
 import time
 import input
