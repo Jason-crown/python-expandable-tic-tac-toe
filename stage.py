@@ -6,3 +6,4 @@ def print_board(x, y, board):
             print(f"{board[x_pos][y_pos]} ", end = "")
         print("|")
     print(f"+{'-'*(2*x+1)}+", end = "")
+    print(f"\x1b[{5};{3}H", end= "", flush = True)

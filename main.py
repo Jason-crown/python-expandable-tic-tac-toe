@@ -8,7 +8,7 @@ print("\x1b[3J\x1b[H\x1b[2J")
 stage.print_board(game1.x, game1.y, game1.board)
 input.start_keyboard_listener()
 
-print(f"\x1b[{5};{3}H", end= "", flush = True)
+
 x_pos = 0
 y_pos = 0
 turn = game1.player1
@@ -41,7 +41,6 @@ while True:
             game_logic.check_win(game1.board, game1.player2, game1.x, game1.y)
         
         if current_key == "esc":
-            print("\nQuitting")
-            break
+            game_logic.quit_game()
         input.last_key_pressed = ""
     time.sleep(0.1)

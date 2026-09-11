@@ -7,8 +7,8 @@ print(f"width = {width}, height = {height}")
 class game:
     x: int = 3
     y: int = 3
-    player1: str = 'x'
-    player2: str = 'o'
+    player1: str = '1'
+    player2: str = '0'
     space: str = '#'
     board: list[list[str]] = field(init=False)
     def __post_init__(self):

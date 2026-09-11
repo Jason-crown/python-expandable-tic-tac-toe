@@ -12,3 +12,4 @@ def on_press(key):
 def start_keyboard_listener():
     listener = keyboard.Listener(on_press=on_press)
     listener.start()
+
