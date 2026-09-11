@@ -11,7 +11,7 @@ input.start_keyboard_listener()
 print(f"\x1b[{5};{3}H", end= "", flush = True)
 x_pos = 0
 y_pos = 0
-turn = 'x'
+turn = game1.player1
 
 while True:
     current_key = input.last_key_pressed
@@ -33,12 +33,12 @@ while True:
             print(f'{turn}\x1b[1D', end= "", flush = True)
             game1.board[x_pos][y_pos] = turn
 
-            if turn == 'x':
-                turn = 'o'
+            if turn == game1.player1:
+                turn = game1.player2
             else :
-                turn = 'x'
-            game_logic.check_win(game1.board, 'x')
-            game_logic.check_win(game1.board, 'o')
+                turn = game1.player1
+            game_logic.check_win(game1.board, game1.player1, game1.x, game1.y)
+            game_logic.check_win(game1.board, game1.player2, game1.x, game1.y)
         
         if current_key == "esc":
             print("\nQuitting")
