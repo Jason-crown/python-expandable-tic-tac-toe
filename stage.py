@@ -1,4 +1,4 @@
-from initialize import x, y, board
+
 
 def print_board(x, y, board):
     print(f'\n\n+{'-'*(2*x+1)}+')
