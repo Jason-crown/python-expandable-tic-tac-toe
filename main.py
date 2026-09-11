@@ -44,6 +44,4 @@ while True:
             print("\nQuitting")
             break
         input.last_key_pressed = ""
-
-    #print(".", end="", flush = True)
     time.sleep(0.1)
