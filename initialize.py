@@ -5,10 +5,10 @@ print(f"width = {width}, height = {height}")
 
 @dataclass
 class game:
-    x: int = 3
-    y: int = 3
-    player1: str = '1'
-    player2: str = '0'
+    x: int = 10
+    y: int = 5
+    player1: str = 'x'
+    player2: str = 'o'
     space: str = '#'
     board: list[list[str]] = field(init=False)
     def __post_init__(self):
