@@ -6,7 +6,7 @@ print(f"width = {width}, height = {height}")
 @dataclass
 class game:
     x: int = 10
-    y: int = 5
+    y: int = 3
     player1: str = 'x'
     player2: str = 'o'
     space: str = '#'
