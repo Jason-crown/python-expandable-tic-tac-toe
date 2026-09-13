@@ -12,6 +12,7 @@ def check_win(board, player, x, y):
 
 def line_check(type, player, board, x, y, span):
     line_set = diagonal_set = 0
+    sub_board = [row[:] for row in board]
     if type == 0:
         upper = x
         lower = y
@@ -30,11 +31,13 @@ def line_check(type, player, board, x, y, span):
                 rows = set_2
                 columns = set_1
                 diagonal_logic = abs(x-(set_2+1))
+            sub_board[rows][columns]
             if board[rows][columns] == player:
                 line_set += 1
 
             if columns == diagonal_logic+span and board[rows][columns] == player:
                 diagonal_set += 1
+            
                 
         if min(x, y) in (line_set, diagonal_set):
             print(f"\x1b[3J\x1b[H\x1b[2J {player} WINS")
