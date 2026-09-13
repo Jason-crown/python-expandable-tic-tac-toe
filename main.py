@@ -11,7 +11,8 @@ input.start_keyboard_listener()
 
 x_pos = 0
 y_pos = 0
-turn = game1.player1
+turn = game1.player_list[0]
+turn_index = 0
 
 while True:
     current_key = input.last_key_pressed
@@ -33,12 +34,14 @@ while True:
             print(f'{turn}\x1b[1D', end= "", flush = True)
             game1.board[x_pos][y_pos] = turn
 
-            if turn == game1.player1:
-                turn = game1.player2
-            else :
-                turn = game1.player1
-            game_logic.check_win(game1.board, game1.player1, game1.x, game1.y)
-            game_logic.check_win(game1.board, game1.player2, game1.x, game1.y)
+            if turn_index < len(game1.player_list)-1:
+                turn_index += 1
+            else:
+                turn_index = 0
+            turn = game1.player_list[turn_index]
+            for players in game1.player_list:
+                game_logic.check_win(game1.board, players, game1.x, game1.y)
+            
         
         if current_key == "esc":
             game_logic.quit_game()

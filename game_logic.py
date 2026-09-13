@@ -11,16 +11,18 @@ def check_win(board, player, x, y):
             line_check(types, player, board, x, y, span)
 
 def line_check(type, player, board, x, y, span):
+    
     line_set = diagonal_set = 0
     sub_board = [[row[i] for row in board] for i in range(len(board[0]))]
-    line_list = [player]*min(x, y)
+    line_list = [player]*game1.win_amount
+
     if type == 0:
         upper = x
         lower = y
     else:
         upper = y
         lower = x
-
+        
     for set_1 in range(0, upper):
         for set_2 in range(0, lower):
 
@@ -35,6 +37,7 @@ def line_check(type, player, board, x, y, span):
 
             if board[rows][columns] == player:
                 line_set += 1
+
             if ("".join(line_list) in "".join(board[rows]) or "".join(line_list) in "".join(sub_board[columns])) == False:
                 line_set = 0
             
@@ -42,7 +45,7 @@ def line_check(type, player, board, x, y, span):
                 diagonal_set += 1
             
                 
-        if min(x, y) in (line_set, diagonal_set) or line_set > min(x, y):
+        if game1.win_amount in (line_set, diagonal_set) or line_set > game1.win_amount:
             print(f"\x1b[3J\x1b[H\x1b[2J {player} WINS")
         line_set = 0
 
