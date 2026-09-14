@@ -43,6 +43,8 @@ def line_check(type, player, board, x, y, span):
 
             if ("".join(line_list) in "".join(board[rows]) or "".join(line_list) in "".join(sub_board[columns])) == False:
                 line_set = 0
+            else:
+                print(f" {player} WINS1")
             
             if columns == diagonal_logic+span:
                 if type == 0:
@@ -52,13 +54,14 @@ def line_check(type, player, board, x, y, span):
 
                 if board[rows][columns] == player:
                     diagonal_set += 1
-                #if ("".join(line_list) in "".join(anti_diagonal_list) or "".join(line_list) in "".join(diagonal_list)) == True:
-                    #print(f"{anti_diagonal_list}")
+                if ("".join(line_list) in "".join(anti_diagonal_list) or "".join(line_list) in "".join(diagonal_list)) == True:
+                    print(f" {player} WINS2")
+                    
             
             
                 
         if game1.win_amount in (line_set, diagonal_set) or line_set > game1.win_amount:
-            print(f"\x1b[3J\x1b[H\x1b[2J {player} WINS{diagonal_list}")
+            print(f"\x1b[3J\x1b[H\x1b[2J {player} WINS3")
         line_set = 0
 
 

@@ -5,8 +5,8 @@ print(f"width = {width}, height = {height}")
 
 @dataclass
 class game:
-    x: int = 10
-    y: int = 5
+    x: int = 4
+    y: int = 2
     win_amount: int = 3
     player_list: list[str] = field(default_factory=lambda: ['x', 'y', 'z'])
     space: str = '#'
