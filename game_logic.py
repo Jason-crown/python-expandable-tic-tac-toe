@@ -11,55 +11,30 @@ def check_win(board, player, x, y):
             line_check(types, player, board, x, y, span)
 
 def line_check(type, player, board, x, y, span):
-    diagonal_list = []
-    anti_diagonal_list = []
-    line_set = diagonal_set = 0
+
     sub_board = [[row[i] for row in board] for i in range(len(board[0]))]
     line_list = [player]*game1.win_amount
-
-    if type == 0:
-        upper = x
-        lower = y
-    else:
-        upper = y
-        lower = x
+    anti_diagonal_list = []    
+    diagonal_list = []
         
-    for set_1 in range(0, upper):
-        for set_2 in range(0, lower):
+    for set_1 in range(0, y if type else x):
+        for set_2 in range(0, x if type else y):
+            if set_1 if type else set_2 == set_1 and type == 0:
+                diagonal_list.append(board[set_1+span][set_1 if type else set_2])
+            if set_1 if type else set_2 == set_2 and type == 1:
+                anti_diagonal_list.append(board[abs(x-(set_2+1))+span][set_1 if type else set_2])
 
-            if type == 0:
-                rows = set_1
-                columns = set_2
-                diagonal_logic = set_1
-            else:
-                rows = set_2
-                columns = set_1
-                diagonal_logic = abs(x-(set_2+1))
-
-            if board[rows][columns] == player:
-                line_set += 1
-
-            if ("".join(line_list) in "".join(board[rows]) or "".join(line_list) in "".join(sub_board[columns])) == False:
-                line_set = 0
-            else:
-                print(f" {player} WINS1")
-
-            if columns == diagonal_logic and type == 0: 
-                diagonal_list.append(board[diagonal_logic+span][columns])
-            if columns == set_2 and type == 1:
-                anti_diagonal_list.append(board[diagonal_logic+span][columns])
-            if ("".join(line_list) in "".join(anti_diagonal_list) or "".join(line_list) in "".join(diagonal_list)) == False:
-                diagonal_set = 0
-            else:
-                print(f" {player} WINS1")
+            if ("".join(line_list) in "".join(anti_diagonal_list) or
+                 "".join(line_list) in "".join(diagonal_list) or
+                   "".join(line_list) in "".join(board[set_2 if type else set_1]) or
+                    "".join(line_list) in "".join(sub_board[set_1 if type else set_2])) == True:
+                win_game(player)
+            
                 
-            if columns == diagonal_logic+span and board[rows][columns] == player:
-                diagonal_set += 1
-                
-        if game1.win_amount in (line_set, diagonal_set) or line_set > game1.win_amount:
-            print(f" {player} WINS{anti_diagonal_list, diagonal_list}")
-        line_set = 0
 
+
+def win_game(player):
+    print(f" \x1b[{5+game1.y};{3+int(game1.x/2)}H{player} WINS")
 
 
 def quit_game():
