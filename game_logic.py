@@ -46,14 +46,13 @@ def line_check(type, player, board, x, y, span):
 
             if columns == diagonal_logic and type == 0: 
                 diagonal_list.append(board[diagonal_logic+span][columns])
-                #print(columns, diagonal_logic+span)
             if columns == set_2 and type == 1:
-                #print(columns, diagonal_logic+span)
                 anti_diagonal_list.append(board[diagonal_logic+span][columns])
             if ("".join(line_list) in "".join(anti_diagonal_list) or "".join(line_list) in "".join(diagonal_list)) == False:
                 diagonal_set = 0
             else:
                 print(f" {player} WINS1")
+                
             if columns == diagonal_logic+span and board[rows][columns] == player:
                 diagonal_set += 1
                 
