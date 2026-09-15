@@ -5,8 +5,8 @@ print(f"width = {width}, height = {height}")
 
 @dataclass
 class game:
-    x: int = 10
-    y: int = 10
+    x: int = 5
+    y: int = 4
     win_amount: int = 3
     player_list: list[str] = field(default_factory=lambda: ['x', 'y', 'z'])
     space: str = '#'
@@ -18,7 +18,7 @@ class game:
         if (height - 5 < self.y): 
             self.y = height - 5
             print(f"new height = {height - 5}")
-        self.win_amount = min(self.x, self.y)
+        self.win_amount = 3 #min(self.x, self.y)
         self.board = [[self.space for _ in range(self.y)] for _ in range(self.x)]
 game1 = game()
 
