@@ -16,18 +16,19 @@ def line_check(type, player, board, x, y, span):
     line_list = [player]*game1.win_amount
     anti_diagonal_list = []    
     diagonal_list = []
-        
+    column = set_1 if type else set_2
+    row = set_2 if type else set_1
     for set_1 in range(0, y if type else x):
         for set_2 in range(0, x if type else y):
-            if set_1 if type else set_2 == set_1 and type == 0:
-                diagonal_list.append(board[set_1+span][set_1 if type else set_2])
+            if column == set_1 and type == 0:
+                diagonal_list.append(board[set_1+span][column])
             if set_1 if type else set_2 == set_2 and type == 1:
-                anti_diagonal_list.append(board[abs(x-(set_2+1))+span][set_1 if type else set_2])
-
+                anti_diagonal_list.append(board[abs(x-(set_2+1))+span][column])
+            
             if ("".join(line_list) in "".join(anti_diagonal_list) or
                  "".join(line_list) in "".join(diagonal_list) or
-                   "".join(line_list) in "".join(board[set_2 if type else set_1]) or
-                    "".join(line_list) in "".join(sub_board[set_1 if type else set_2])) == True:
+                   "".join(line_list) in "".join(board[row]) or
+                    "".join(line_list) in "".join(sub_board[column])) == True:
                 win_game(player)
             
                 
