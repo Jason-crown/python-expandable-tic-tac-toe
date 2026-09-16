@@ -1,6 +1,18 @@
 import sys
 from initialize import game1
 
+turn = game1.player_list[0]
+turn_index = 0
+def turn_logic():
+    global turn
+    global turn_index
+    if turn_index < len(game1.player_list)-1:
+        turn_index += 1
+    else:
+        turn_index = 0
+    turn = game1.player_list[turn_index]
+    return turn
+
 def check_win(board, player, x, y):
     if not any(game1.space in row for row in board):
         print("\x1b[3J\x1b[H\x1b[2J Tie")
@@ -22,7 +34,7 @@ def line_check(type, player, board, x, y, span):
 
             if column == set_1 and type == 0:
                 diagonal_list.append(board[set_1+span][column])
-                
+
             if column == set_2 and type == 1:
                 anti_diagonal_list.append(board[abs(x-(set_2+1))+span][column])
 

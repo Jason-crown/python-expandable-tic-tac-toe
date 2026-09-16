@@ -3,13 +3,17 @@ from dataclasses import dataclass, field
 width, height = shutil.get_terminal_size()
 print(f"width = {width}, height = {height}")
 last_key_pressed = '\t'
-
+letters = list(range(97, 123))
+for a in range(len(letters)):
+    letters[a] = chr(letters[a])
+x_pos = 0
+y_pos = 0
 @dataclass
 class game:
-    x: int = 5
-    y: int = 5
-    win_amount: int = 3
-    player_list: list[str] = field(default_factory=lambda: ['x', 'y'])
+    x: int = 3
+    y: int = 3
+    win_amount: int = 3 # this is a place holder value 
+    player_list: list[str] = field(default_factory=lambda: ['x', 'y']) # add to this list to get more players
     space: str = '#'
     board: list[list[str]] = field(init=False)
     def __post_init__(self):
