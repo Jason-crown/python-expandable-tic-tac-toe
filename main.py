@@ -8,7 +8,6 @@ print("\x1b[3J\x1b[H\x1b[2J")
 stage.print_board(game1.x, game1.y, game1.board)
 input.start_keyboard_listener()
 
-
 x_pos = 0
 y_pos = 0
 turn = game1.player_list[0]
@@ -17,16 +16,17 @@ turn_index = 0
 while True:
     current_key = input.last_key_pressed
     if current_key != "":
-        if x_pos > 0 and current_key == "left":
+        
+        if x_pos > 0 and current_key in ("left",'a'):
             print(f"\x1b[2D", end= "", flush = True)
             x_pos -= 1
-        elif x_pos < (game1.x-1) and current_key == "right":
+        elif x_pos < (game1.x-1) and current_key in ("right",'d'):
             print(f"\x1b[2C", end= "", flush = True)
             x_pos += 1
-        elif y_pos > 0 and current_key == "up":
+        elif y_pos > 0 and current_key in ("up",'w'):
             print(f"\x1b[1A", end= "", flush = True)
             y_pos -= 1
-        elif y_pos < (game1.y-1) and current_key == "down":
+        elif y_pos < (game1.y-1) and current_key in ("down",'w'):
             print(f"\x1b[1B", end= "", flush = True)
             y_pos += 1
         
