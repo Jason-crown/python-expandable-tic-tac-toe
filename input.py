@@ -3,6 +3,7 @@ from initialize import game1
 import game_logic
 last_key_pressed = ""
 
+
 def on_press(key):
     global last_key_pressed
     try:
@@ -10,9 +11,11 @@ def on_press(key):
     except AttributeError:
         last_key_pressed = key.name
 
+
 def start_keyboard_listener():
     listener = keyboard.Listener(on_press=on_press)
     listener.start()
+
 
 def game_options(x_pos, y_pos, current_key):
     x_pos, y_pos = game_movement(x_pos, y_pos, current_key)
@@ -27,6 +30,7 @@ def game_options(x_pos, y_pos, current_key):
     if current_key == "esc":
         game_logic.quit_game()
     return x_pos, y_pos
+
 
 def game_movement(x_pos, y_pos, current_key):
     if x_pos > 0 and current_key in ("left",'a'):

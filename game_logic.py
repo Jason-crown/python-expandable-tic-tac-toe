@@ -1,11 +1,8 @@
 import sys
-from initialize import game1
+from initialize import game1, turn, turn_index
 
-turn = game1.player_list[0]
-turn_index = 0
 def turn_logic():
-    global turn
-    global turn_index
+    global turn, turn_index
     if turn_index < len(game1.player_list)-1:
         turn_index += 1
     else:
@@ -23,6 +20,7 @@ def check_win(board, player, x, y):
             line_check(types, player, board, x, y, span)
 
 def line_check(type, player, board, x, y, span):
+
     sub_board = [[row[i] for row in board] for i in range(len(board[0]))]
     line_list = [player]*game1.win_amount
     anti_diagonal_list = diagonal_list = []
@@ -46,7 +44,6 @@ def line_check(type, player, board, x, y, span):
             
 def win_game(player):
     print(f" \x1b[{5+game1.y};{3+int(game1.x/2)}H{player} WINS")
-
 
 def quit_game():
     print("\n\tQuitting")
