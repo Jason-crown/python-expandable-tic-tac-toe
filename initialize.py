@@ -12,15 +12,15 @@ turn_index = 0
 @dataclass
 class game:
 
-    x: int = 10
-    y: int = 10
+    x: int = 3 # change the width of the board here
+    y: int = 3 # change the height of the board here
 
     space: str = '#'
     win_amount: int = 3
 
     board: list[list[str]] = field(init=False)
-    player_list: list[str] = field(default_factory=lambda: ['x', 'y', 'z']) # add to this list to get more players
-    
+    player_list: list[str] = field(default_factory=lambda: ['x', 'y']) # add to this list to get more players
+
     def __post_init__(self):
 
         if (width/2 - 5 < self.x): 

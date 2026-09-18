@@ -24,15 +24,15 @@ def check_win(board, player, x, y):
 def line_check(type, player, board, x, y, span):
 
     sub_board = [[row[i] for row in board] for i in range(len(board[0]))]
+    anti_diagonal_list = diagonal_list = []    
     line_list = [player]*game1.win_amount
-    anti_diagonal_list = diagonal_list = []
 
-    span_1, span_2 = span,0 if x>y else 0,span
+    (span_1, span_2) = (span, 0) if x>y else (0, span)
 
     for set_1 in range(0, y if type else x):
         for set_2 in range(0, x if type else y):
 
-            column, row = set_1, set_2 if type else set_2, set_1
+            (column, row) = (set_1, set_2) if type else (set_2, set_1)
 
             if column == set_1 and type == 0:
                 diagonal_list.append(board[set_1+span_1][column+span_2])
