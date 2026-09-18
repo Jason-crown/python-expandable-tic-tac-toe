@@ -34,7 +34,7 @@ def line_check(type, player, board, x, y, span):
                 diagonal_list.append(board[set_1][column+span])
 
             if column == set_2 and type == 1:
-                anti_diagonal_list.append(board[abs(x-(set_2+1))+span][column])
+                anti_diagonal_list.append(board[abs(x-(set_2+1))][column+span])
 
             board_list = ["".join(board[row]), "".join(sub_board[column]),"".join(diagonal_list),"".join(anti_diagonal_list)]
 
