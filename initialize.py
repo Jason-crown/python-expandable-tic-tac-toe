@@ -12,7 +12,7 @@ turn_index = 0
 @dataclass
 class game:
 
-    x: int = 3
+    x: int = 10
     y: int = 10
     space: str = '#'
     win_amount: int = 3
