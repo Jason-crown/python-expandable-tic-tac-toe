@@ -29,14 +29,14 @@ def line_check(type, player, board, x, y, span):
         for set_2 in range(0, x if type else y):
 
             column = set_1 if type else set_2
-
+            row = set_2 if type else set_1
             if column == set_1 and type == 0:
                 diagonal_list.append(board[set_1+span][column])
 
             if column == set_2 and type == 1:
                 anti_diagonal_list.append(board[abs(x-(set_2+1))+span][column])
 
-            board_list = ["".join(board[column]), "".join(sub_board[column]),"".join(diagonal_list),"".join(anti_diagonal_list)]
+            board_list = ["".join(board[row]), "".join(sub_board[column]),"".join(diagonal_list),"".join(anti_diagonal_list)]
 
             for i in range(4):
                 if ("".join(line_list) in "".join(board_list[i])) == True:
