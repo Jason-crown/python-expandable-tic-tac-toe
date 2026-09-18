@@ -14,10 +14,13 @@ class game:
 
     x: int = 10
     y: int = 10
+
     space: str = '#'
     win_amount: int = 3
+
     board: list[list[str]] = field(init=False)
     player_list: list[str] = field(default_factory=lambda: ['x', 'y', 'z']) # add to this list to get more players
+    
     def __post_init__(self):
 
         if (width/2 - 5 < self.x): 

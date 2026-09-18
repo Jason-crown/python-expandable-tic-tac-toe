@@ -11,8 +11,10 @@ def turn_logic():
     return turn
 
 def check_win(board, player, x, y):
+    
     if not any(game1.space in row for row in board):
         print("\x1b[3J\x1b[H\x1b[2J Tie")
+
     for span in range(abs(y-x)+1):
         for types in range(2):
             if x > y and span > 0 and types == 1:
@@ -24,17 +26,14 @@ def line_check(type, player, board, x, y, span):
     sub_board = [[row[i] for row in board] for i in range(len(board[0]))]
     line_list = [player]*game1.win_amount
     anti_diagonal_list = diagonal_list = []
-    if x>y :
-        span_1 = span
-        span_2 = 0
-    else :
-        span_1 = 0
-        span_2 = span
+
+    span_1, span_2 = span,0 if x>y else 0,span
+
     for set_1 in range(0, y if type else x):
         for set_2 in range(0, x if type else y):
 
-            column = set_1 if type else set_2
-            row = set_2 if type else set_1
+            column, row = set_1, set_2 if type else set_2, set_1
+
             if column == set_1 and type == 0:
                 diagonal_list.append(board[set_1+span_1][column+span_2])
 
