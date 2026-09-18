@@ -31,7 +31,7 @@ def line_check(type, player, board, x, y, span):
             column = set_1 if type else set_2
             row = set_2 if type else set_1
             if column == set_1 and type == 0:
-                diagonal_list.append(board[set_1+span][column])
+                diagonal_list.append(board[set_1][column+span])
 
             if column == set_2 and type == 1:
                 anti_diagonal_list.append(board[abs(x-(set_2+1))+span][column])
